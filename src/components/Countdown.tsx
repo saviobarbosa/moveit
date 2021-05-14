@@ -1,17 +1,16 @@
-import { useState, useEffect, useContext } from 'react';
-import { ChallengesContext } from '../contexts/ChallengesContext';
-import { CountdownContext, CountdownProvider } from '../contexts/CountdownContext';
+import { useContext } from 'react';
+import { CountdownContext } from '../contexts/CountdownContext';
 import styles from '../styles/components/Countdown.module.css';
 
 
 export function Countdown() {
-    const { 
-        minutes, 
-        seconds, 
-        hasFinished, 
-        isActive, 
-        startCountdown, 
-        resetCountdown 
+    const {
+        minutes,
+        seconds,
+        hasFinished,
+        isActive,
+        startCountdown,
+        resetCountdown
     } = useContext(CountdownContext)
 
     const [minuteLeft, minuteRight] = String(minutes).padStart(2, '0').split('');
@@ -33,23 +32,23 @@ export function Countdown() {
 
             {hasFinished ? (
                 <button
-                    disabled 
+                    disabled
                     className={styles.coundownButton}>
-                    Ciclo encerrado 
+                    Ciclo encerrado
                 </button>
             ) : (
                 <>
                     {isActive ? (
-                        <button 
-                            type="button" 
-                            className={`${styles.coundownButton} ${styles.countdownButtonActive}` } 
+                        <button
+                            type="button"
+                            className={`${styles.coundownButton} ${styles.countdownButtonActive}`}
                             onClick={resetCountdown}>
                             Abandonar ciclo
                         </button>
                     ) : (
                         <button type="button" className={styles.coundownButton} onClick={startCountdown}>
                             Iniciar um ciclo
-                        </button> 
+                        </button>
                     )}
                 </>
             )}

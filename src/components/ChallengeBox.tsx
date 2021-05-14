@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { ChallengesContext } from '../contexts/ChallengesContext';
 import { CountdownContext } from '../contexts/CountdownContext';
+
 import styles from '../styles/components/ChallengeBox.module.css';
 
-export default function ChallengeBox() {
+export function ChallengeBox() {
     const { activeChallenge, resetChallenge, completeChallenge } = useContext(ChallengesContext);
     const { resetCountdown } = useContext(CountdownContext);
 
@@ -22,25 +23,25 @@ export default function ChallengeBox() {
             { activeChallenge ? (
                 <div className={styles.challengeActive}>
                     <header>Ganhe {activeChallenge.amount} xp</header>
-                    
+
                     <main>
                         <img src={`icons/${activeChallenge.type}.svg`} />
                         <strong>Novo desafio</strong>
                         <p>{activeChallenge.description}</p>
                     </main>
-                    
+
                     <footer>
-                        <button 
+                        <button
                             type='button'
                             className={styles.challengeFailedButton}
                             onClick={handleChallengeFailed}>
                             Falhei
                         </button>
-                        <button 
+                        <button
                             type='button'
                             className={styles.challengeSuccededButton}
                             onClick={handleChallengeSucceded}>
-                                Completei
+                            Completei
                         </button>
                     </footer>
                 </div>
@@ -48,7 +49,7 @@ export default function ChallengeBox() {
                 <div className={styles.challengeNotActive}>
                     <strong>Finalize um ciclo para receber esses desafios.</strong>
                     <p>
-                        <img src="icons/level-up.svg" alt="Level Up"/>
+                        <img src="icons/level-up.svg" alt="Level Up" />
                         Avançe de level completando desafios.
                     </p>
                 </div>
